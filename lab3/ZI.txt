@@ -1,0 +1,50 @@
+4.1
+
+2. 
+(d)
+Probability of detecting a correct language increases greatly along with input's length. In instance where multiple languages are used in input text, program returns
+only one language (in our case it was 'eng', because first part of sentence was in English) and probability of correct detection decreases significantly (approx. 0.26,
+when in case of long input written in one language the propability was approx. 0.95).
+
+3. 
+(c)
+Tokens differ when it comes to the last part of sentences. Depending on interpretation of comas, periods and whitespaces, inputs have been split into various parts.
+(e)
+When we change tokenization model to German version, outputs stay the same. Seems like changing language doesn't influence the process.
+
+4.
+(d, e, f)
+When it comes to interrobangs, program struggles to divide text on both sides of it into two sentences. Also, a period inside a normal sentence creates two sentences
+instead being treated as a typing mistake. Every sentence starts with 'Hi'. Adding exclamation or question marks doesn't change the fact that it isn't treated as sentence.
+It's usually 'swallowed' by next sentence. Double question mark is ignored by sentence detector.
+
+5.
+(c)
+List of identifications:
+'Cats' - NNS - noun, plural - correct.
+'like' - IN - conjunction, subordinating or preposition - wrong (should be a verb).
+'milk' - NN - noun, singular or mass - correct.
+
+'Cat' - NNP - noun, proper singular - correct.
+'is' - VBZ - verb, 3rd person singular present - correct.
+'white' - JJ - adjective - correct.
+'like' - IN - conjunction, subordinating or preposition - correct, it's a preposition.
+'milk' - NN - noun, singular or mass - correct.
+
+6.
+(b)
+Both outputs are different for each other. In case of lemmatization, words like 'Hi' or 'OpenNLP' are marked as zeros, because they didn't match any criteria.
+In case of stemming, some words are missing 'e' at the end of them (ex. 'are' -> 'ar', 'provide' -> 'provid', 'natural' -> 'natur'). Interesting thing happened with word 'are'.
+When lemmatizating, it changed to 'be' as it should, while stemming cut 'e' at the end. Lemmatization requires POS tags to assign part of speech to certain words.
+
+7.
+(a)
+POS tags, just as with lemmatization, are required to assign output values to given words. "B-" prefix represent the start of the chunk and "I-" prefix represent
+the continuation of a chunk. There are 8 chunks. The only wrong decision happened with word 'big'. Application claims it is a noun (NP), while in context of the sentence it's an adjective (JJ).
+
+8.
+(b)
+Program works fine most of the time. Sometimes it assigns wrong words as names, i.e. 'The' or 'Desk' and 'Set'. It also happens that it skips some names ('Holmstrom' 'Cranfield').
+Efficiency is approximately 60-70%.
+(c)
+En-ner-xyz.bin model is looking for years in two formats. One is a simple year like '1945' or '1957', while the second finds years with an 's' at the end ('1950s', '1970s').
